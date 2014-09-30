@@ -1,0 +1,122 @@
+Entities -
+1> User
+2> Institutions
+3> Companies/Organisations
+4> Clients
+5> Degrees
+6> Recognitions
+7> Certifications
+8> Technologies
+9> Product
+10> Contribution Posts
+
+What are the activities they can do?
+
+Done -- 1>  Anyone can create a profile of user (Type - Personal)
+Done -- 2>  User can edit profile
+Done -- 3>  User studied/studies in Institution
+Done -- 4>  User worked/works in Company/Organisation
+Done -- 5>  User works in Company which works for clients
+Done -- 6>  User dirctly works/worked for clients
+Done -- 7>  User achieved Degrees from Institutions
+Done -- 8>  User achieved Recognitions from Company
+Done -- 9>  User achieved Recognitions from Client which can be Individual or Organisation
+Done -- 10> User has earned certification from institution for Technology
+Done -- 11> User has earned certification from institution for Product
+Done -- 12> User has earned certification from Companies for Technology
+Done -- 13> User has earned certification from Companies for Product
+Done -- 14> User knows Technologies
+Done -- 15> User knows Products as Implementor
+Done -- 16> User knows Products as Developer
+17> User has done contribution posts on technology
+18> User has done contribution posts on product as developer
+19> User has done contribution posts on product as implementer
+20> User has created the product
+21> The Product is voted by Users
+22> The Product is shared by Users
+23> User Invites User to become friend
+Done -- 24> User can follow another User
+25> User can accept User Request
+26> User can reject User Request
+Done -- 27> User can follow product
+28> User will receive product update
+29> User will receive fan update of another user
+30> User votes product update
+31> User votes User Activity update
+32> User votes User Contribution Posts update
+33> Product is built on some Technologies
+34> Company/Organisation made product
+35> Company/Organisation works with Technologies
+
+
+What are the Questions which we are going to answer?
+
+1> Who are the friends of the User
+2> Who are the followers of the User
+3> To whom User has followed 
+4> On the basis of certifications, which product should be interesting to the user?
+(Hint - User -> Has -> certification on technologies -> built the product -> User not already followed the product)
+5> On the basis of certifications, which company/organisation should be interesting to the user?
+A>(Hint - User -> Has -> certification on technologies -> built the product -> made by company/organisation -> Interesting to the User)
+B>(Hint - User -> Has -> certification on technologies -> specialisation of company/organisation -> Interesting to the User)
+6> From company perspective - Who are the potential users with whom Company should talk?
+A> Reverse of 5 A
+B> Reverse of 5 B
+C> Hint - Company built the product - on some technology - contribution posts/conversation by the user - From Upvoted to low Voted - interesting to company
+D> Hint - Company work on some technology - contribution posts/conversation by the user - From Upvoted to low Voted - interesting to company
+E> Hint -Company should talk to users who are having specific degrees
+E> Hint -Company should talk to users who are implementer for specific product
+F> Hint -Company should talk to users who are developer for specific product
+7> To which users - user should follow or make friend
+Hint - same technologies with recognition
+Hint - same products with recognition
+Hint - same technologies
+Hint - same products
+Hint - same institution and degree
+Hint - same certification
+8> Which clients can be interesting to the User?
+9> Which Certification user should do?
+Hint -(User work on product - on technology - certification on that technology - user not having the certification)
+Hint -(User work with technology - certification on that technology - user not having the certification)
+Hint -(User contributes some post on product - on technology - certification on that technology - user not having the certification)
+Hint -(User contributes some post on technology - certification on that technology - user not having the certification)
+10> On the basis of work experience, which company should be interesting to the user?
+(Hint - User -> Has worked on technologies -> built the product -> by the company)
+(Hint - User -> Has worked on technologies -> work by the company)
+11> On the basis of work experience, which client should be interesting to the user?
+(Hint - User -> Has worked on technologies -> built the product -> by the client)
+(Hint - User -> Has worked on technologies -> work by the client)
+12> On which Technology User should work more?
+(Hint - some technology - Maximum used to low used - user worked - but no contributon posts)
+(Hint - some technology - Maximum used to low used - user worked - contributon posts - but less or no voted)
+(Hint - some technology - Maximum used to low used - user worked - No friend in this technology)
+13> Institution should target user as customer
+Hint - Same as 6>
+14> Top Most 5 Popular Product on a related technology in this Graph?
+(Hint - Vote Much)
+(Hint - User Most)
+15> Top Most 5 technology in this Graph?
+(Hint - Vote Much on Product by Technology)
+(Hint - User Most)
+16> If User has a post or conversation on a technology -
+   A> He has potential for Company/Organisation
+   B> He has potential for Clients
+   C> He can do certification
+   D> He can go for Institution
+17> If he works on some technology, he should learn other techs also
+    Hint - Tech - Product - Other Tech - which is not known to user - more finer will be 
+                                        which is most popular in respect of that specific product
+                                        which is most popular but not in product
+18> If user vote for other user activity - contribution post - then he should learn some tech if already not, should have certificate if already not, follow some other people.
+19> If user has degree recognition from company/institution for tech/product, he should be hired by company/organisation/client
+20> If user knows some technology - he should know more for product - for to be hired potential to company/organisation or client
+
+ 
+
+
+
+
+ 
+
+
+

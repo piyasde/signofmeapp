@@ -1,0 +1,69 @@
+<%include headerothers.ejs%>
+<div class="container" >
+      <!-- Example row of columns -->
+	<div class="row" style="padding-top: 40px; padding-bottom:160px;">
+	
+       <div class="col-12 col-lg-12" style="margin:0 auto;" ng-controller="TotalCtrl">
+	<div class="panel">
+					<div class="panel-heading">	
+			<h3 class="">
+				<img src="../anyimage.jpeg" alt="Smiley face" height="100" width="100">&nbsp;&nbsp;&nbsp;&nbsp;My Profile
+			</h3>
+			</div>
+			<div class="panel-body">
+			<!-- CONTACT FORM -->
+			<form id="ajax-contacts" class="">
+				<fieldset>
+					<div class="form-group">
+						<label for="name">Name</label>&nbsp;&nbsp;&nbsp;&nbsp;<%= user.name %>
+					</div>
+					<div class="form-group">
+						<label for="email">E-Mail</label>&nbsp;&nbsp;&nbsp;&nbsp;<%= user.email %>
+					</div>
+
+<div class="form-group">
+						<label for="name">Live in City</label>&nbsp;&nbsp;&nbsp;&nbsp;<%= user.userProfile[0].city %>
+					</div>
+<div class="form-group">
+						<label for="name">Live in State</label>&nbsp;&nbsp;&nbsp;&nbsp;<%= user.userProfile[0].state %>
+					</div>
+<div class="form-group">
+						<label for="name">Live in Country</label>&nbsp;&nbsp;&nbsp;&nbsp;<%= user.userProfile[0].country %>
+					</div>
+
+					<div class="form-group">
+						<label for="message">About Me</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<%= user.userProfile[0].aboutme %><br>
+					</div>
+					<div class="form-group">
+						<label for="message">Work Summery</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<%= user.userProfile[0].work %><br>
+					</div>
+
+					<div class="form-group">
+						<label for="message">Skill Summery</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<%= user.userProfile[0].skill %><br>
+					</div>
+		<div class="form-group">
+						<label for="message">Projects</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<%= user.userProfile[0].project %><br>
+					</div>
+
+					<div class="form-group">
+						<label for="message">Education</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<%= user.userProfile[0].education %><br>
+					</div>
+
+
+					
+				<fieldset>
+			</form>
+			<!-- END CONTACT FORM -->
+			</div>
+			</div>
+
+					</div>
+      </div>
+
+      <hr>
+<%include footerothers.ejs%>	

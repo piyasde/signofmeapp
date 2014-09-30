@@ -1,0 +1,8 @@
+MERGE (userProfile:SignofmeUserProfile { entitytype :'signofmeuserprofile', email :'piyasde@gmail.com' , city:'A', state:'D', country : 'A', aboutme:'A', work:'B', skill:'C', project:'P', education:'E', datetime:timestamp()})  
+ON MATCH SET city ='A',state='S',country = 'C',aboutme='X',work='W',skill='s',project='p',education='A',updatedatetime=timestamp() RETURN userProfile;
+
+CYPHERMATCH (userProfile:SignofmeUserProfile { entitytype :'signofmeuserprofile', email :'piyasde@gmail.com'}) DELETE userProfile;
+
+
+MATCH (user:Signofmeuser{ entitytype:'signofmeuser', email:'piyasde@gmail.com'}),(userProfile:SignofmeUserProfile { entitytype:'signofmeuserprofile', email:'piyasde@gmail.com'}) MERGE (user)-[r:CREATED]->(userProfile) RETURN r;
+

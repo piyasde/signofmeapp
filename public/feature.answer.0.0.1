@@ -1,0 +1,521 @@
+// Supported syntax - Neo4j Cypher Refcard 2.0
+
+A Cypher command to create an user
+
+[source,cypher]
+----
+// Create users
+CREATE (user1:User {
+            firstName: "John",
+            LastName: "Doe",
+            username: "johndoe",
+            email: "johndoe@gmail.com",
+            aboutme: "I am software developer" });
+
+CREATE (user2:User {
+            firstName: "Sham",
+            LastName: "Doe",
+            username: "shamdoe",
+            email: "shamdoe@gmail.com",
+            aboutme: "I am DBA" });
+
+CREATE (user3:User {
+            firstName: "Andre",
+            LastName: "Doe",
+            username: "andredoe",
+            email: "andredoe@gmail.com",
+            aboutme: "I am Frontend Developer" });
+
+CREATE (user4:User {
+            firstName: "Renold",
+            LastName: "Doe",
+            username: "renolddoe",
+            email: "renolddoe@gmail.com",
+            aboutme: "I am Tester" });
+
+CREATE (user5:User {
+            firstName: "Arnold",
+            LastName: "Doe",
+            username: "arnolddoe",
+            email: "arnolddoe@gmail.com",
+            aboutme: "I am Software Implementer" });
+
+CREATE (user6:User {
+            firstName: "Jordan",
+            LastName: "Doe",
+            username: "jordandoe",
+            email: "jordandoe@gmail.com",
+            aboutme: "I am Software Consultant" });
+
+
+CREATE (user7:User {
+            firstName: "Nick",
+            LastName: "Doe",
+            username: "nickdoe",
+            email: "nickdoe@gmail.com",
+            aboutme: "Software Consultant" });
+
+
+
+CREATE (inst1:Institution {
+            name: "Stanford"});
+CREATE (inst2:Institution {
+            name: "MIT"});
+CREATE (inst3:Institution {
+            name: "Sheffield"});
+CREATE (inst4:Institution {
+            name: "IIT Bangalore"});
+
+CREATE (orgn1:Organisation {
+            name: "ABC",
+            yearofest:1950,
+            description:"The Product Company",
+            minemployee:5000});
+
+CREATE (orgn2:Organisation {
+            name: "ABB",
+            yearofest:1940,
+            description:"The Product and Service Company",
+            minemployee:10000});
+
+CREATE (orgn3:Organisation {
+            name: "IBC",
+            yearofest:1900,
+            description:"The Service Company",
+            minemployee:100000});
+
+CREATE (orgn4:Organisation {
+            name: "General Electric",
+            yearofest:1900,
+            description:"Client Company 1",
+            minemployee:100000});
+
+CREATE (orgn5:Organisation {
+            name: "Nestle",
+            yearofest:1910,
+            description:"Client Company 2",
+            minemployee:50000});
+
+CREATE (orgn6:Organisation {
+            name: "SONY",
+            yearofest:1920,
+            description:"Client Company 3",
+            minemployee:10000});
+
+CREATE (degr1:Degree {
+            name: "BSC In Computer Science"});
+
+CREATE (degr2:Degree {
+            name: "MSC In Computer Science"});
+
+CREATE (achv1:Achievement {
+            name: "Employee of the Year"});
+
+CREATE (achv2:Achievement {
+            name: "Best Performer"});
+
+CREATE (achv3:Achievement {
+            name: "Best Resource of the Year"});
+
+CREATE (cert1:Certification { name: "MongoDB Certified Developer",code:"MNDBCD"});
+
+CREATE (cert2:Certification { name: "SAP Certified Developer",code:"SAPCD"});
+
+CREATE (cert3:Certification { name: "ORACLE APPS Certified Developer",code:"ORACD"});
+
+CREATE (cert4:Certification { name: "SUN Certified Java Developer",code:"SUNCD"});
+
+CREATE (cert5:Certification { name: "Neo4J Certified Developer",code:"NEOCD"});
+
+CREATE (cert6:Certification { name: "Certified Professional for Graph Database",code:"GDCP"});
+
+CREATE (cert7:Certification { name: "Certified Professional for Document Oriented Database",code:"DODCP"});
+
+
+
+CREATE (tech1:Technology { name: "Document Oriented Database"});
+
+CREATE (tech2:Technology { name: "J2ee"});
+
+CREATE (tech3:Technology { name: "Graph Database"});
+
+CREATE (tech4:Technology { name: "Server Side Javascript"});
+
+CREATE (tech5:Technology { name: "Javascript MV* Framework"});
+
+CREATE (tech6:Technology { name: "C++"});
+
+CREATE (tech7:Technology { name: "Javascript"});
+
+CREATE (prod1:Product { name: "Angular.js"});
+
+CREATE (prod2:Product { name: "Node.js"});
+
+CREATE (prod3:Product { name: "Neo4J"});
+
+CREATE (prod4:Product { name: "SAP"});
+
+CREATE (prod5:Product { name: "MongoDB"});
+
+CREATE (post1:Posts { title: "Introduction to Neo4J",URL:"http://www.sample.com/introduction-to-neo4j"});
+CREATE (post2:Posts { title: "Introduction to MongoDB",URL:"http://www.sample.com/introduction-to-mongodb"});
+CREATE (post3:Posts { title: "MongoDB Advance Commands",URL:"http://www.sample.com/mongodb-advance-commands"});
+CREATE (post4:Posts { title: "Neo4j Advance Commands",URL:"http://www.sample.com/neo4j-advance-commands"});
+CREATE (post5:Posts { title: "J2ee Web Applications",URL:"http://www.sample.com/j2ee-web-applications"});
+CREATE (post6:Posts { title: "J2ee Messaging Services",URL:"http://www.sample.com/j2ee-messaging-services"});
+CREATE (post7:Posts { title: "J2ee Business Components",URL:"http://www.sample.com/j2ee-business-componenets"});
+
+----
+
+// Product is built on some technology
+
+CREATE (tech1:Technology { name: "Document Oriented Database"});
+
+CREATE (tech2:Technology { name: "J2ee"});
+
+CREATE (tech3:Technology { name: "Graph Database"});
+
+CREATE (tech4:Technology { name: "Server Side Javascript"});
+
+CREATE (tech5:Technology { name: "Javascript MV* Framework"});
+
+
+CREATE (prod1:Product { name: "Angular.js"});
+
+CREATE (prod2:Product { name: "Node.js"});
+
+CREATE (prod3:Product { name: "Neo4J"});
+
+CREATE (prod4:Product { name: "SAP"});
+
+CREATE (prod5:Product { name: "MongoDB"});
+ 
+[source,cypher]
+----
+MATCH (a:Technology),(b:Product) Where a.name ='Graph Database' And b.name ='Neo4J' CREATE (a)-[r1:USED_TO_BUILD]->(b) RETURN a,b;
+MATCH (a:Technology),(b:Product) Where a.name ='C++' And b.name ='Node.js' CREATE (a)-[r1:USED_TO_BUILD]->(b) RETURN a,b;
+MATCH (a:Technology),(b:Product) Where a.name ='J2ee' And b.name ='SAP' CREATE (a)-[r1:USED_TO_BUILD]->(b) RETURN a,b;
+MATCH (a:Technology),(b:Product) Where a.name ='Javascript' And b.name ='Angular.js' CREATE (a)-[r1:USED_TO_BUILD]->(b) RETURN a,b;
+
+
+
+---- 
+
+// Follows Product
+
+[source,cypher]
+----
+MATCH (a:User),(b:Product) Where a.username ='shamdoe' And b.name ='SAP' CREATE (a)-[r1:FOLLOWS]->(b) RETURN a,b;
+MATCH (a:User),(b:Product) Where a.username ='shamdoe' And b.name ='MongoDB' CREATE (a)-[r1:FOLLOWS]->(b) RETURN a,b;
+MATCH (a:User),(b:Product) Where a.username ='johndoe' And b.name ='Neo4J' CREATE (a)-[r1:FOLLOWS]->(b) RETURN a,b;
+MATCH (a:User),(b:Product) Where a.username ='johndoe' And b.name ='Node.js' CREATE (a)-[r1:FOLLOWS]->(b) RETURN a,b;
+MATCH (a:User),(b:Product) Where a.username ='johndoe' And b.name ='Angular.js' CREATE (a)-[r1:FOLLOWS]->(b) RETURN a,b;
+
+---- 
+
+// Follows User
+
+[source,cypher]
+----
+MATCH (a:User),(b:User) Where a.username ='shamdoe' And b.username ='jordandoe' CREATE (b)-[r1:FOLLOWS]->(a) RETURN a,b;
+MATCH (a:User),(b:User) Where a.username ='shamdoe' And b.username ='nickdoe' CREATE (b)-[r1:FOLLOWS]->(a) RETURN a,b;
+
+---- 
+
+// Friends Relationship
+
+
+[source,cypher]
+----
+MATCH (a:User),(b:User) Where a.username ='johndoe' And b.username ='andredoe' CREATE (a)-[r1:FRIEND]->(b) RETURN a,b;
+MATCH (a:User),(b:User) Where a.username ='johndoe' And b.username ='andredoe' CREATE (b)-[r1:FRIEND]->(a) RETURN a,b;
+MATCH (a:User),(b:User) Where a.username ='johndoe' And b.username ='renolddoe' CREATE (a)-[r1:FRIEND]->(b) RETURN a,b;
+MATCH (a:User),(b:User) Where a.username ='johndoe' And b.username ='renolddoe' CREATE (b)-[r1:FRIEND]->(a) RETURN a,b;
+
+---- 
+
+// User knows Technologies
+
+[source,cypher]
+----
+MATCH (c:Technology),(a:User) Where c.name ='Graph Database' And a.username ='johndoe' CREATE (a)-[r1:KNOWS]->(c) RETURN c,a;
+
+
+
+---- 
+
+//Relation User has earned certification from Companies for Product
+
+[source,cypher]
+----
+
+MATCH (b:User),(c:Certification),(a:Organisation),(d:Product) Where b.username = 'nickdoe' AND c.code ='NEOCD' And a.name ='ABB' AND d.name = 'Neo4J' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Organisation) Where c.code ='NEOCD' And a.name ='ABB' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+MATCH (b:User),(c:Certification),(a:Organisation),(d:Product) Where b.username = 'arnolddoe' AND c.code ='MNDBCD' And a.name = 'IBC' AND d.name = 'MongoDB' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Organisation) Where c.code ='MNDBCD' And a.name ='IBC' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+----
+
+
+//Relation User has earned certification from Companies for Technology
+
+[source,cypher]
+----
+
+MATCH (b:User),(c:Certification),(a:Organisation),(d:Technology) Where b.username = 'andredoe' AND c.code ='GDCP' And a.name ='ABC' AND d.name = 'Graph Database' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Organisation) Where c.code ='GDCP' And a.name ='ABC' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+MATCH (b:User),(c:Certification),(a:Organisation),(d:Technology) Where b.username = 'renolddoe' AND c.code ='DODCP' And a.name ='IBC' AND d.name = 'Document Oriented Database' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Organisation) Where c.code ='DODCP' And a.name ='IBC' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+----
+
+
+
+
+//Relation User has earned certification from institution for Technology
+
+[source,cypher]
+----
+
+MATCH (b:User),(c:Certification),(a:Institution),(d:Technology) Where b.username = 'nickdoe' AND c.code ='GDCP' And a.name ='Stanford' AND d.name = 'Graph Database' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Institution) Where c.code ='GDCP' And a.name ='Stanford' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+MATCH (b:User),(c:Certification),(a:Institution),(d:Technology) Where b.username = 'arnolddoe' AND c.code ='DODCP' And a.name ='Sheffield' AND d.name = 'Document Oriented Database' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Institution) Where c.code ='DODCP' And a.name ='Sheffield' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+----
+
+//Relation User has earned certification from institution for Product
+
+[source,cypher]
+----
+
+MATCH (b:User),(c:Certification),(a:Institution),(d:Product) Where b.username = 'johndoe' AND c.code ='NEOCD' And a.name ='Stanford' AND d.name = 'Neo4J' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Institution) Where c.code ='NEOCD' And a.name ='Stanford' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+MATCH (b:User),(c:Certification),(a:Institution),(d:Product) Where b.username = 'shamdoe' AND c.code ='MNDBCD' And a.name ='Sheffield' AND d.name = 'MongoDB' CREATE (b)-[r:EARNED]->(c)<-[r2:GIVEN_FOR]-(d)<-[r1:TEACH_BY]-(a) RETURN b,c,a,d;
+
+MATCH (c:Certification),(a:Institution) Where c.code ='MNDBCD' And a.name ='Sheffield' CREATE (c)<-[r1:OFFERED_BY]-(a) RETURN c,a;
+
+----
+
+
+
+
+
+//Relation Creation User, Achievement and Organisation
+
+[source,cypher]
+----
+
+MATCH (b:User),(c:Achievement) WHERE b.username = 'nickdoe' AND c.name = 'Best Resource of the Year' CREATE (b)-[r:ACHIEVED]->(C) RETURN b,c;
+MATCH (b:User),(c:Achievement),(a:Organisation) Where b.username = 'nickdoe' AND c.name ='Best Resource of the Year' And a.name ='General Electric' CREATE (b)-[r:ACHIEVED]->(c)<-[r1:OFFERRED_BY]-(a) RETURN b,c,a;
+----
+
+//The Degree is offerred by Institution
+[source,cypher]
+----
+
+MATCH (a:Degree),(b:Institution) WHERE a.code = 'BSC' AND b.name = 'Stanford' CREATE (a)<-[r:OFFERED_BY]-(b) RETURN a,b,r;
+MATCH (a:Degree),(b:Institution) WHERE a.code = 'BSC' AND b.name = 'MIT' CREATE (a)<-[r:OFFERED_BY]-(b) RETURN a,b,r;
+MATCH (a:Degree),(b:Institution) WHERE a.code = 'BSC' AND b.name = 'Sheffield' CREATE (a)<-[r:OFFERED_BY]-(b) RETURN a,b,r;
+MATCH (a:Degree),(b:Institution) WHERE a.code = 'MSC' AND b.name = 'Stanford' CREATE (a)<-[r:OFFERED_BY]-(b) RETURN a,b,r;
+MATCH (a:Degree),(b:Institution) WHERE a.code = 'MSC' AND b.name = 'IIT Bangalore' CREATE (a)<-[r:OFFERED_BY]-(b) RETURN a,b,r;
+----
+
+//The Achievement is offerred by Company
+[source,cypher]
+----
+
+MATCH (a:Organisation),(b:Achievement) WHERE a.name = 'IBC' AND b.name = 'Employee of the Year' CREATE (a)-[r:OFFERRED]->(b) RETURN a,b,r;
+MATCH (a:Organisation),(b:Achievement) WHERE a.name = 'ABB' AND b.name = 'Best Performer' CREATE (a)-[r:OFFERRED]->(b) RETURN a,b,r;
+
+----
+
+//Update specific Node in Neo4j
+[source,cypher]
+----
+MATCH (n { name: 'BSC In Computer Science' }) set n.code = 'BSC'  RETURN n
+MATCH (n { name: 'MSC In Computer Science' }) set n.code = 'MSC' RETURN n
+----
+
+// Return EARNED_DEGREE Relationship
+
+[source,cypher]
+----
+MATCH (a:User),(b:Degree) WHERE a.username = 'johndoe' AND b.code = 'BSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'shamdoe' AND b.code = 'BSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'andredoe' AND b.code = 'BSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'arnolddoe' AND b.code = 'MSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'renolddoe' AND b.code = 'MSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'jordandoe' AND b.code = 'MSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Degree) WHERE a.username = 'nickdoe' AND b.code = 'MSC' CREATE (a)-[r:EARNED_DEGREE]->(b) RETURN a,b,r;
+----
+
+// Return ACHIEVED Relationship
+
+[source,cypher]
+----
+MATCH (a:User),(b:Achievement) WHERE a.username = 'johndoe' AND b.name = 'Employee of the Year' CREATE (a)-[r:ACHIEVED]->(b) RETURN a,b,r;
+MATCH (a:User),(b:Achievement) WHERE a.username = 'shamdoe' AND b.name = 'Best Performer' CREATE (a)-[r:ACHIEVED]->(b) RETURN a,b,r;
+
+
+// Return all outgoing relationship for a node
+
+[source,cypher]
+----
+
+MATCH (user { username:'johndoe' })-[r]->()
+RETURN r
+
+MATCH (co { name:'IBC' })-[r]->()
+RETURN r
+----
+
+//On which Institution, User has studied?
+
+[source,cypher]
+----
+
+MATCH (user { username:'johndoe' })-[r:STUDIED_AT]->(m)
+RETURN user,r,m
+
+// This is for all users
+
+MATCH (user)-[r:STUDIED_AT]->(m)
+RETURN user.firstName,r.yearofstudy,m.name
+
+----
+
+// Return Outgoing Nodes for User which also has outgoing nodes 
+
+[source,cypher]
+----
+MATCH (User { username:'johndoe' })-[]->(m)-[]->(n) return m,n;
+MATCH (User { username:'johndoe' })-[]->(m)-[:SERVES_AS_CONSULTING_CO]->(n) return m,n;
+----
+
+
+// Return all incoming nodes for a node
+
+[source,cypher]
+----
+MATCH (comapny { name:'IBC' })<--(entity)
+RETURN entity
+----
+
+// Return all outgoing nodes for a node
+
+[source,cypher]
+----
+
+MATCH (user { username:'johndoe' })-->(entity)
+RETURN entity
+----
+
+// Return all user and their institutions from Nodes
+
+[source,cypher]
+----
+MATCH (a:User),(b:Institution) WHERE (a)-[:STUDIED_AT]->(b) RETURN a,b;
+----
+
+
+
+
+// Return WORKS_AT,WORKED_AT Relationship
+
+[source,cypher]
+----
+MATCH (a:User),(b:Organisation) WHERE a.username = 'nickdoe' AND b.name = 'Nestle' CREATE (a)-[r:CONSULTANT_AT{startyear:2012}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'jordandoe' AND b.name = 'General Electric' CREATE (a)-[r:CONSULTANT_AT{startyear:2010}]->(b) RETURN r;
+
+MATCH (a:User),(b:Organisation) WHERE a.username = 'johndoe' AND b.name = 'IBC' CREATE (a)-[r:WORKS_AT{startyear:2009}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'johndoe' AND b.name = 'ABC' CREATE (a)-[r:WORKED_AT{startyear:2002,endyear:2008}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'shamdoe' AND b.name = 'ABB' CREATE (a)-[r:WORKS_AT{startyear:2006}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'andredoe' AND b.name = 'ABB' CREATE (a)-[r:WORKS_AT{startyear:2009}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'renolddoe' AND b.name = 'IBC' CREATE (a)-[r:WORKS_AT{startyear:2010}]->(b) RETURN r;
+MATCH (a:User),(b:Organisation) WHERE a.username = 'arnolddoe' AND b.name = 'ABC' CREATE (a)-[r:WORKS_AT{startyear:2000}]->(b) RETURN r;
+
+
+
+
+----
+// Return nodes with Relationship
+
+[source,cypher]
+----
+MATCH (a)-[:STUDIED_AT]->(b) RETURN a;
+MATCH (a)-[:STUDIED_AT]->(b) RETURN a.email;
+MATCH (a)<-[:STUDIED_AT]-(b) RETURN DISTINCT(a.name);
+
+----
+
+//Create Relationship in Nodes
+
+[source,cypher]
+----
+MATCH (a:User),(b:Institution) WHERE a.username = 'johndoe' AND b.name = 'Stanford' CREATE (a)-[r:STUDIED_AT]->(b) RETURN r;
+MATCH (a:User),(b:Institution) WHERE a.username = 'shamdoe' AND b.name = 'MIT' CREATE (a)-[r:STUDIED_AT]->(b) RETURN r;
+MATCH (a:User),(b:Institution) WHERE a.username = 'andredoe' AND b.name = 'Sheffield' CREATE (a)-[r:STUDIED_AT]->(b) RETURN r;
+MATCH (a:User),(b:Institution) WHERE a.username = 'renolddoe' AND b.name = 'IIT Bangalore' CREATE (a)-[r:STUDIED_AT]->(b) RETURN r;
+MATCH (a:User),(b:Institution) WHERE a.username = 'arnolddoe' AND b.name = 'Stanford' CREATE (a)-[r:STUDIED_AT]->(b) RETURN r;
+
+MATCH (a:Organisation),(b:Organisation) WHERE a.name = 'IBC' AND b.name = 'General Electric' CREATE (a)-[r:SERVES_AS_CONSULTING_CO]->(b) RETURN r;
+MATCH (a:Organisation),(b:Organisation) WHERE a.name = 'IBC' AND b.name = 'Nestle' CREATE (a)-[r:SERVES_AS_CONSULTING_CO]->(b) RETURN r;
+
+
+
+----
+
+// Return specific nodes in neo4j on the basis of label
+
+[source,cypher]
+----
+MATCH (inst:Institution) RETURN inst;
+MATCH (user:User) RETURN user;
+----
+[source,cypher]
+----
+
+//Update specific relationship in Neo4j
+----
+MATCH ((n { firstName: 'Arnold' })-[r:STUDIED_AT]->()) set r.yearofstudy = 1999  RETURN n,r
+----
+
+//Update node in Neo4j
+
+[source,cypher]
+----
+MATCH (n { firstName: 'Arnold' }) SET n.aboutme = 'I am Software Product Implementer' RETURN n
+----
+
+//Returns all nodes from Neo4j
+
+[source,cypher]
+----
+START n=node(*) RETURN n;
+----
+
+//Delete all nodes and relationships from Neo4j
+[source,cypher]
+----
+START n = node(*) MATCH n-[r]-() WHERE (ID(n)>0 AND ID(n)<10000) DELETE n, r;
+----
+
+//Delete simple nodes from neo4j
+[source,cypher]
+----
+START n = node(*) MATCH n DELETE n;
+----
+
+
