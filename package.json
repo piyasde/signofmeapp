@@ -2,7 +2,7 @@
   "name": "signofme",
   "main": "server.js",
   "dependencies": {
-    "express": "~4.0.0",
+    "express": "^4.0.0",
     "body-parser": "^1.8.3",
     "neo4j-js": "0.0.8",
     "http-status": "^0.1.8",
@@ -15,6 +15,11 @@
     "parsleyjs": "^2.0.5",
     "log": "^1.4.0",
     "async": "^0.9.0",
-    "helmet": "^0.4.1"
+    "helmet": "^0.4.1",
+    "stackexchange": "^0.1.0",
+    "github": "^0.2.2",
+    "node-linkedin": "^0.3.3",
+    "twit": "^1.1.18",
+    "googleapis": "^1.0.14"
   }
 }

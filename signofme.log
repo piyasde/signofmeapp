@@ -1,19 +1,4 @@
-[Wed Oct 01 2014 01:13:39 GMT+0530 (IST)] DEBUG neo3 -->>piyasde@gmail.com
-[Wed Oct 01 2014 01:13:39 GMT+0530 (IST)] DEBUG neo2.1 -->>http://localhost:7474/db/data/
-[Wed Oct 01 2014 01:13:39 GMT+0530 (IST)] DEBUG neo2.2 -->>[object Object]
-[Wed Oct 01 2014 01:13:40 GMT+0530 (IST)] DEBUG neo2 -->>[object Object]
-[Wed Oct 01 2014 01:16:15 GMT+0530 (IST)] DEBUG neo3 -->>piyasde@gmail.com
-[Wed Oct 01 2014 01:16:15 GMT+0530 (IST)] DEBUG neo2.1 -->>http://localhost:7474/db/data/
-[Wed Oct 01 2014 01:16:15 GMT+0530 (IST)] DEBUG neo2.2 -->>[object Object]
-[Wed Oct 01 2014 01:16:15 GMT+0530 (IST)] DEBUG neo2 -->>[object Object]
-[Wed Oct 01 2014 01:17:43 GMT+0530 (IST)] DEBUG neo3 -->>piyasde@gmail.com
-[Wed Oct 01 2014 01:17:43 GMT+0530 (IST)] DEBUG neo2.1 -->>http://localhost:7474/db/data/
-[Wed Oct 01 2014 01:17:43 GMT+0530 (IST)] DEBUG neo2.2 -->>[object Object]
-[Wed Oct 01 2014 01:17:43 GMT+0530 (IST)] DEBUG neo2 -->>[object Object]
-[Wed Oct 01 2014 01:20:13 GMT+0530 (IST)] DEBUG contents -->> {"results":[{"columns":["user"],"data":[{"row":[{"email":"piyasde@gmail.com","entitytype":"signofmeuser","pwd":"p1","name":"Shyam Das Updated 3333 Again"}]}]}],"errors":[]}
-[Wed Oct 01 2014 01:20:13 GMT+0530 (IST)] DEBUG contents -->> {"results":[{"columns":["userProfile"],"data":[{"row":[{"email":"piyasde@gmail.com","entitytype":"signofmeuserprofile","datetime":1412103825908,"country":"india","aboutme":"piyas","state":"wb","project":"signofme","updatedatetime":1412106613673,"skill":"my skill","work":"node","city":"kolkata","education":"mca"}]}]}],"errors":[]}
-[Wed Oct 01 2014 01:20:13 GMT+0530 (IST)] DEBUG contents -->> {"results":[{"columns":["r"],"data":[{"row":[{}]}]}],"errors":[]}
-[Wed Oct 01 2014 01:20:26 GMT+0530 (IST)] DEBUG neo3 -->>piyasde@gmail.com
-[Wed Oct 01 2014 01:20:26 GMT+0530 (IST)] DEBUG neo2.1 -->>http://localhost:7474/db/data/
-[Wed Oct 01 2014 01:20:26 GMT+0530 (IST)] DEBUG neo2.2 -->>[object Object]
-[Wed Oct 01 2014 01:20:26 GMT+0530 (IST)] DEBUG neo2 -->>[object Object]
+[Fri Oct 03 2014 07:38:31 GMT+0530 (IST)] DEBUG neo3 -->>piyasde@gmail.com
+[Fri Oct 03 2014 07:38:31 GMT+0530 (IST)] DEBUG neo2.1 -->>http://localhost:7474/db/data/
+[Fri Oct 03 2014 07:38:31 GMT+0530 (IST)] DEBUG neo2.2 -->>[object Object]
+[Fri Oct 03 2014 07:38:31 GMT+0530 (IST)] DEBUG neo2 -->>[object Object]

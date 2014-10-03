@@ -1,0 +1,29 @@
+{
+  "name": "bower-signofme",
+  "version": "1.0.0",
+  "authors": [
+    "PIYAS DE <piyas.de@gmail.com>"
+  ],
+  "description": "all client packages will be updated here",
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "www.signofme.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.25",
+    "angular-ui-router": "~0.2.11",
+    "angular": "1.2.25",
+    "ng-ckeditor": "~0.2.1",
+    "parsleyjs": "~2.0.5"
+  }
+}

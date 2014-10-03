@@ -1,0 +1,110 @@
+-- Blog Creation --
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is first blog",blogtype:"micro"}) 
+ON CREATE SET blog.content = "This is my first blog in signofme. It is a good one...",blog.upsign = 0,blog.downsign = 0, blog.createddatetime = timestamp() 
+ON MATCH SET blog.title = "this is first blog micro updated", blog.content = "This is my first blog in signofme.It is updated now. It is a good one...", blog.modifieddatetime = timestamp() 
+RETURN blog;
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is second micro blog",blogtype:"micro"}) 
+ON CREATE SET blog.content = "This is my second micro blog in signofme. It is a good one...",blog.upsign = 0,blog.downsign = 0, blog.createddatetime = timestamp() 
+ON MATCH SET blog.title = "this is second blog micro updated", blog.content = "This is my second micro blog in signofme.It is updated now. It is a good one...", blog.modifieddatetime = timestamp() 
+RETURN blog;
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is third blog",blogtype:"normal"}) 
+ON CREATE SET blog.content = "This is my third micro blog in signofme. It is a good one...",blog.upsign = 0,blog.downsign = 0, blog.createddatetime = timestamp() 
+ON MATCH SET blog.title = "this is third blog micro updated", blog.content = "This is my third blog in signofme.It is updated now. It is a good one...", blog.modifieddatetime = timestamp() 
+RETURN blog;
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is fourth blog",blogtype:"normal"}) 
+ON CREATE SET blog.content = "This is my fourth blog in signofme. It is a good one...",blog.upsign = 0,blog.downsign = 0, blog.createddatetime = timestamp() 
+ON MATCH SET blog.title = "this is fourth blog updated", blog.content = "This is my fourth blog in signofme.It is updated now. It is a good one...", blog.modifieddatetime = timestamp() 
+RETURN blog;
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is second micro blog",blogtype:"micro"}) 
+ON MATCH SET blog.upsign = blog.upsign +1
+return blog;
+
+MERGE (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is second micro blog",blogtype:"micro"}) 
+ON MATCH SET blog.downsign = blog.downsign +1
+return blog;
+
+-- Find Blog, Tag --
+MATCH (blog:SignofmeBlog { entitytype :"signofmeblog", email:"piyas.de@gmail.com", title:"this is first blog micro updated",blogtype:"micro"}) return blog;
+
+MATCh ( tag:Signofmetag{enititytype:"signofmetag"}) RETURN tag;
+
+
+--Tag Creation --
+
+FOREACH (prop IN [{name:"blog"},{name:"technology"},{name:"javascript"},{name:"nosql"}]| 
+         MERGE ( tag:Signofmetag{enititytype:"signofmetag",name:prop.name}) );
+
+-- Blog Tag --
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"}) RETURN tag;
+MATCH (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is first blog micro updated"}) return blog;
+
+-- First Blog
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is first blog micro updated"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"technology"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is first blog micro updated"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+-- Second Blog
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"technology"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is second micro blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"javascript"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is second micro blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+-- Third Blog
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"javascript"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is third blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"nosql"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is third blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+-- fourth Blog
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"nosql"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is fourth blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"}), (blog:SignofmeBlog { entitytype :"signofmeblog",title:"this is fourth blog"}) MERGE (tag)-[r:TAGGED_FOR]->(blog) RETURN r;
+
+
+-- Blog Writing Relationship
+
+MATCH (user{ entitytype:"signofmeuser",email:"piyasde@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is first blog micro updated"}) MERGE (user)-[r:WRITTEN]->(blog) RETURN r;
+
+MATCH (user{ entitytype:"signofmeuser",email:"piyasde@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is second micro blog"}) MERGE (user)-[r:WRITTEN]->(blog) RETURN r;
+
+MATCH (user{ entitytype:"signofmeuser",email:"piyasde@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is third blog"}) MERGE (user)-[r:WRITTEN]->(blog) RETURN r;
+
+MATCH (user{ entitytype:"signofmeuser",email:"piyasde@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is fourth blog"}) MERGE (user)-[r:WRITTEN]->(blog) RETURN r;
+
+-- blog written by user --
+
+MATCH (user{ entitytype:"signofmeuser",email:"piyasde@gmail.com"})-[r:WRITTEN]->(blog) RETURN blog;
+
+MATCH (user{ entitytype:"signofmeuser",email:"ketakinandi@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is first blog micro updated"}) MERGE (user)-[r:COMMENTED{createdatetime:timestamp(),comment:"this is first comment",commenttype:"blogcomment"}]->(blog) RETURN r;
+
+MATCH (user{ entitytype:"signofmeuser",email:"titasde@gmail.com"}) , (blog{ entitytype :"signofmeblog",title:"this is first blog micro updated"}) MERGE (user)-[r:COMMENTED{createdatetime:timestamp(),comment:"this is second comment",commenttype:"blogcomment"}]->(blog) RETURN r;
+
+MATCH (user)-[r:COMMENTED]->(blog{ entitytype :"signofmeblog",title:"this is first blog micro updated"}) return user,r;
+
+MATCH (user)-[r:COMMENTED]->(blog{ entitytype :"signofmeblog",title:"this is first blog micro updated"}) return user.name,r.comment,r.createdatetime;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"})-[r:TAGGED_FOR]->(blog)<-[r1:COMMENTED]-(user) RETURN r1.comment,user.name,blog.title;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"})-[r:TAGGED_FOR]->(blog)<-[r1:COMMENTED]-(user) RETURN count(r1.comment),user.name;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"})-[r:TAGGED_FOR]->(blog)<-[r1:COMMENTED]-(user) RETURN count(r1.comment),blog.title;
+
+start n = node(*) where n.title =~ '.*micro.*' return n.title, n;
+
+start n = node(*) where n.entitytype = 'signofmeblog' and n.upsign is NULL return n.title;
+
+start n = node(*) where n.entitytype = 'signofmeblog' and n.upsign is NOT NULL return n.title;
+
+start n = node(*) where n.entitytype = 'signofmeblog' and n.upsign >1 return n.title;
+
+MATCH ( tag:Signofmetag{enititytype:"signofmetag",name:"blog"})-[r:TAGGED_FOR]->(blog)<-[r1:COMMENTED]-(user) where r1.comment=~'.*first.*' RETURN r1.comment,user.name,blog.title;
+
+

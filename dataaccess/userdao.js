@@ -1,5 +1,6 @@
 var config = require('./dataconfig/config');
 var neo4j = require('neo4j-js');
+var neo = require('./neoquery');
 
 var util = require('../utilpackages/util');
 
@@ -43,12 +44,6 @@ var mergeUserUserProfileRelation =
 'MATCH (user{ entitytype:{inputentitytypeuser}, email:{inputemail}}),(userProfile { entitytype:{inputentitytypeuserprofile}, email:{inputemail}}) MERGE (user)-[r:CREATED]->(userProfile) RETURN r';
 
 
-//MERGE (keanu:Person { name:'Keanu Reeves' })
-//ON CREATE SET keanu.created = timestamp()
-//ON MATCH SET keanu.lastSeen = timestamp()
-//RETURN keanu
-
-var neo = require('./neoquery');
 
 
 var finduserquery = ['MATCH (a) where a.entitytype={inputentitytype} and a.email={inputemail} return a;'];

@@ -105,15 +105,15 @@ module.exports = function(passport) {
 
 		        },				
 		], function(err) {
+			if(err==='No user found.')
+        			return done(null, false, req.flash('loginMessage', 'No user found.'));
+			if(err==='Oops! Wrong password.')
+        			return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));	
 			if (err) {
 			  console.error(err.stack || err);
+			  return done(err);
 			}
-			//console.log(userLocal);
 			user = 	userLocal;
-			//console.log(user);
-			//console.log(user.userProfile);
-			//console.log("here 1234 -->>"+user.userProfile[0]);
-			//console.log("here 123411 -->>"+user.userProfile[0].city);
 			return done(null,user);
 		      });	
 		
